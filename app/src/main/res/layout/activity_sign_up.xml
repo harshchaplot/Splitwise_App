@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <EditText
-        android:id="@+id/uname"
+        android:id="@+id/et_uname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/century_gothic"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.4" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/et_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/century_gothic"
