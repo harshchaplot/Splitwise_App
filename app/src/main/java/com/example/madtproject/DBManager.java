@@ -43,7 +43,6 @@ public class DBManager {
 
     public int update(long _id, String uname, String password) {
         ContentValues contentValues = new ContentValues();
-        //contentValues.put(SQLiteHelper._ID, _id);
         contentValues.put(SQLiteHelper.UNAME, uname);
         contentValues.put(SQLiteHelper.PASSWORD, password);
         return this.database.update(SQLiteHelper.TABLE_NAME_LOGIN, contentValues, "_id = " + _id, null);

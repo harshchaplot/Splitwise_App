@@ -13,6 +13,7 @@ public class sign_up extends AppCompatActivity {
     Button b1;
     EditText e1,e2;
     DBManager dbManager;
+    String uname,password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,7 @@ public class sign_up extends AppCompatActivity {
         dbManager = new DBManager(getApplicationContext());
         b1 = findViewById(R.id.sign_up_up);
         e1 = findViewById(R.id.et_uname);
-        e2 = findViewById(R.id.et_password);
+        e2 = findViewById(R.id.password_et);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,17 +32,21 @@ public class sign_up extends AppCompatActivity {
                 } else{
                     try {
                         if (e2.getText().toString().trim().length() != 0) {
-                            String uname = e1.getText().toString().trim();
-                            String password = e2.getText().toString().trim();
-                            String query = "Select * From CANDIDATE where uname = '"+uname+"'";
+                            uname = e1.getText().toString().trim();
+                            password = e2.getText().toString().trim();
+                            String query = "Select * From LOGIN where uname = '"+uname+"'";
                             if(dbManager.check(query)){
-                                Toast.makeText(getApplicationContext(), "Already Exist!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Already Exists!", Toast.LENGTH_SHORT).show();
                             }else{
                                 dbManager.insert(uname, password);
-                                Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_SHORT).show();
+                                dbManager.close();
+                                Intent intent = new Intent(getApplicationContext(),login.class);
+                                startActivity(intent);
+                                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "please provide password!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Please provide a password!", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
@@ -49,9 +54,6 @@ public class sign_up extends AppCompatActivity {
                     }
                 }
                 dbManager.close();
-                Intent intent = new Intent(getApplicationContext(),login.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             }
         });
     }
