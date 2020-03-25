@@ -8,8 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class login extends AppCompatActivity {
-    EditText uname,password;
+    TextInputEditText uname,password;
     Button login;
     DBManager dbManager;
     @Override
@@ -17,8 +19,8 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
-        uname = findViewById(R.id.uname);
-        password = findViewById(R.id.password);
+        uname = findViewById(R.id.et_uname_login);
+        password = findViewById(R.id.et_pwd_login);
         login = findViewById(R.id.login);
         dbManager = new DBManager(getApplicationContext());
         login.setOnClickListener(new View.OnClickListener() {
@@ -28,7 +30,7 @@ public class login extends AppCompatActivity {
                 String pwd_db = "";
                 String username = uname.getText().toString();
                 try{
-                    String query = "Select PASSWORD From LOGIN where uname = '"+username+"'";
+                    String query = "Select * From LOGIN where UNAME = '"+username+"'";
                     String pwd = password.getText().toString();
                     pwd_db = dbManager.getPassword(query);
                     pwd_db += " is the password";

@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Button;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class sign_up extends AppCompatActivity {
     Button b1;
-    EditText e1,e2;
+    TextInputEditText e1,e2;
     DBManager dbManager;
     String uname,password;
     @Override
@@ -22,7 +23,7 @@ public class sign_up extends AppCompatActivity {
         dbManager = new DBManager(getApplicationContext());
         b1 = findViewById(R.id.sign_up_up);
         e1 = findViewById(R.id.et_uname);
-        e2 = findViewById(R.id.password_et);
+        e2 = findViewById(R.id.et_pwd);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

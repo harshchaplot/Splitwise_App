@@ -65,9 +65,9 @@ public class DBManager {
     public String getPassword(String query){
         String password = "";
         Cursor c = this.database.rawQuery(query,null);
-        int index = c.getColumnIndexOrThrow("password");
-        //password = c.getString(index);
-        password += index;
+        int index = 2;
+        //c.moveToFirst();
+        password = c.getString(index);
         return password;
     }
 }
