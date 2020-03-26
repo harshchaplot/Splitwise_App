@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -48,11 +49,13 @@ public class main extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
                 break;
-            case R.id.nav_send:
-                Toast.makeText(getApplicationContext(),"Send",Toast.LENGTH_SHORT).show();
+            case R.id.nav_login:
+                Intent intent = new Intent(getApplicationContext(),login.class);
+                startActivity(intent);
                 break;
-            case R.id.nav_share:
-                Toast.makeText(getApplicationContext(),"Share",Toast.LENGTH_SHORT).show();
+            case R.id.nav_Sign_up:
+                Intent intent1 = new Intent(getApplicationContext(),sign_up.class);
+                startActivity(intent1);
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
