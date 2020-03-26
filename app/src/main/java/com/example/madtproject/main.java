@@ -49,10 +49,10 @@ public class main extends AppCompatActivity implements NavigationView.OnNavigati
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
                 break;
             case R.id.nav_send:
-                Toast.makeText(getApplicationContext(),"Send",Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(),"Send",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_share:
-                Toast.makeText(getApplicationContext(),"Share",Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(),"Share",Toast.LENGTH_SHORT).show();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
