@@ -66,7 +66,7 @@ public class DBManager {
         String password = "";
         Cursor c = this.database.rawQuery(query,null);
         int index = 2;
-        //c.moveToFirst();
+        c.moveToFirst();
         password = c.getString(index);
         return password;
     }

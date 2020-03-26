@@ -28,17 +28,22 @@ public class login extends AppCompatActivity {
             public void onClick(View v) {
                 dbManager.open();
                 String pwd_db = "";
+                String pwd = "";
                 String username = uname.getText().toString();
                 try{
                     String query = "Select * From LOGIN where UNAME = '"+username+"'";
-                    String pwd = password.getText().toString();
+                    pwd = password.getText().toString();
                     pwd_db = dbManager.getPassword(query);
-                    pwd_db += " is the password";
                 }
                 catch (Exception e){
                     Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
                 }
-                Toast.makeText(getApplicationContext(),pwd_db,Toast.LENGTH_LONG).show();
+                if(pwd.equals(pwd_db)){
+                    Toast.makeText(getApplicationContext(),"You are good to go",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Enter correct credentials",Toast.LENGTH_SHORT).show();
+                }
                 dbManager.close();
             }
         });
